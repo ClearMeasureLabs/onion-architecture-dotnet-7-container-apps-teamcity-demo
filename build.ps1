@@ -153,7 +153,6 @@ Function PackageScript {
 Function Package{
 	Write-Output "Packaging nuget packages"
 	dotnet tool install --global Octopus.DotNet.Cli | Write-Output $_ -ErrorAction SilentlyContinue #prevents red color is already installed
-	dotnet-octo pack --id "testpack2"
     PackageUI
     PackageDatabase
     PackageAcceptanceTests
