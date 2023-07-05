@@ -58,9 +58,8 @@ object Build : BuildType({
 
     dependencies {
         artifacts(IntegrationBuild) {
-            buildRule = lastSuccessful()
             cleanDestination = true
-            artifactRules = "ChurchBulletin.UI.3.0.23.nupkg"
+            artifactRules = "***"
         }
     }
 })
