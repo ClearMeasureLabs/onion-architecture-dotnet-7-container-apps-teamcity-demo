@@ -131,6 +131,10 @@ object IntegrationBuild : BuildType({
     artifactRules = """build\*.nupkg"""
     buildNumberPattern = "3.0.%build.counter%"
 
+    params {
+        password("OctoApiKey", "credentialsJSON:17f0e7e1-518d-4cd1-b427-7365685fa010")
+    }
+
     vcs {
         root(DslContext.settingsRoot)
     }
