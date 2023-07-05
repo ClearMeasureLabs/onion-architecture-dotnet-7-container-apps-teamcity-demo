@@ -39,6 +39,7 @@ project {
     params {
         param("env.BuildConfiguration", "Release")
         param("OctoSpace", "Spaces-195")
+        param("OctoURL", "https://clearmeasure.octopus.app/")
         param("env.BUILD_BUILDNUMBER", "%build.number%")
         param("env.Version", "%build.number%")
         password("OctoApiKey", "credentialsJSON:959b363e-7a9f-4706-86fa-532f285020e7", label = "OctoApiKey")
