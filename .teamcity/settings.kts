@@ -138,7 +138,6 @@ object IntegrationBuild : BuildType({
     params {
         param("OctoServer", "https://clearmeasure.octopus.app/")
         param("OctoSpace", "Spaces-195")
-        password("OctoApiKey", "credentialsJSON:17f0e7e1-518d-4cd1-b427-7365685fa010")
     }
 
     vcs {
