@@ -30,6 +30,7 @@ version = "2023.05"
 project {
 
     buildType(IntegrationBuild)
+    buildType(Build)
 
     params {
         param("env.BUILD_BUILDNUMBER", "%build.number%")
@@ -37,6 +38,24 @@ project {
         param("env.Version", "%build.number%")
     }
 }
+
+object Build : BuildType({
+    name = "Build"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
 
 object IntegrationBuild : BuildType({
     name = "Integration Build"
