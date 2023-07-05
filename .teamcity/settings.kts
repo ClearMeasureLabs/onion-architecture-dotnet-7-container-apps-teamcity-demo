@@ -79,7 +79,7 @@ object Build : BuildType({
                     path = "Dockerfile"
                 }
                 contextDir = "."
-                namesAndTags = "%build.number%"
+                namesAndTags = "churchbulletin.ui:%build.number%"
                 commandArgs = "--pull"
             }
         }
