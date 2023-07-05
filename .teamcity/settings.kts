@@ -67,9 +67,8 @@ object Build : BuildType({
             name = "Install UI nupkg"
             scriptMode = script {
                 content = """
-                    ${'$'}nupkgPath = "ChurchBulleint.UI.%build.number%.nupkg"
-                    
-                    ${'$'}destinationPath = "./built"
+                    ${'$'}nupkgPath = "build/ChurchBulleint.UI.%build.number%.nupkg"
+                    ${'$'}destinationPath = "built"
                     
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     
