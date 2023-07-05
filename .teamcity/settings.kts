@@ -55,6 +55,13 @@ object Build : BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        artifacts(IntegrationBuild) {
+            buildRule = lastSuccessful()
+            artifactRules = "ChurchBulletin.UI.3.0.23.nupkg"
+        }
+    }
 })
 
 object IntegrationBuild : BuildType({
