@@ -69,7 +69,7 @@ object Build : BuildType({
                 content = """
                     dir
                     Get-ChildItem -Path build | Select-Object -Property Name
-                    ${'$'}nupkgPath = "build/ChurchBulleint.UI.%build.number%.nupkg"
+                    ${'$'}nupkgPath = "build/ChurchBulletin.UI.%build.number%.nupkg"
                     ${'$'}destinationPath = "built"
                     
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
