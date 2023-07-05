@@ -170,6 +170,10 @@ object IntegrationBuild : BuildType({
                     
                     # Run build script
                     . .\build.ps1 ; CIBuild
+                    
+                    foreach(${'$'}file in (Get-ChildItem ".\build\" -Recurse -Include *.nupkg)) {
+                    	dotnet octo push --server=https://clearmeasure.octopus.app/ --apiKey <Your API Key> --space="Spaces-195" --package ${'$'}file
+                    }
                 """.trimIndent()
             }
         }
