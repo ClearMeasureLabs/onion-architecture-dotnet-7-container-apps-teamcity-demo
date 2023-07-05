@@ -1,6 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
@@ -45,16 +44,6 @@ object Build : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-    }
-
-    steps {
-        dockerCommand {
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-            }
-        }
     }
 
     triggers {
