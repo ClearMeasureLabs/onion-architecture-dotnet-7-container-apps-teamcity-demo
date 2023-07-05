@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
@@ -57,6 +58,16 @@ object Build : BuildType({
                     nuget install ChurchBulletin.UI -Version %env.BUILD_BUILDNUMBER% -Source build\
                     mv ChurchBulletin.UI.${'$'}{{ env.BUILD_BUILDNUMBER }} built
                 """.trimIndent()
+            }
+        }
+        dockerCommand {
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                contextDir = "."
+                namesAndTags = "%build.number%"
+                commandArgs = "--pull"
             }
         }
     }
