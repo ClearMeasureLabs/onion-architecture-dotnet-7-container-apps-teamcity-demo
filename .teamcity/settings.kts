@@ -91,7 +91,7 @@ object Build : BuildType({
         dockerCommand {
             name = "Docker Push"
             commandType = push {
-                namesAndTags = "churchbulletin.ui:%build.number%"
+                namesAndTags = "onionarchitecturedotnet7containers.azurecr.io/churchbulletin.ui:%build.number%"
             }
         }
     }
