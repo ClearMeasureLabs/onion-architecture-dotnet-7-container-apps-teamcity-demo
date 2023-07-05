@@ -176,7 +176,7 @@ object IntegrationBuild : BuildType({
                     . .\build.ps1 ; CIBuild
                     
                     foreach(${'$'}file in (Get-ChildItem ".\build\" -Recurse -Include *.nupkg)) {
-                    	dotnet octo push --server=%OctoServer%/ --apiKey=%OctoApiKey% --space=%OctoSpace% --package ${'$'}file
+                    	dotnet octo push --server=%OctoURL%/ --apiKey=%OctoApiKey% --space=%OctoSpace% --package ${'$'}file
                     }
                 """.trimIndent()
             }
