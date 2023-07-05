@@ -83,6 +83,12 @@ object Build : BuildType({
                 commandArgs = "--pull"
             }
         }
+        dockerCommand {
+            name = "Docker Push"
+            commandType = push {
+                namesAndTags = "churchbulletin.ui:%build.number%"
+            }
+        }
     }
 
     triggers {
