@@ -42,6 +42,8 @@ project {
 object Build : BuildType({
     name = "DockerBuildAndPush"
 
+    buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+
     vcs {
         root(DslContext.settingsRoot)
     }
