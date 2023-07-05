@@ -67,7 +67,7 @@ object Build : BuildType({
             name = "Install UI nupkg"
             scriptMode = script {
                 content = """
-                    ${'$'}nupkgPath = "build/ChurchBulleint.UI. %build.number%.nupkg"
+                    ${'$'}nupkgPath = "ChurchBulleint.UI. %build.number%.nupkg"
                     
                     ${'$'}destinationPath = "./built"
                     
