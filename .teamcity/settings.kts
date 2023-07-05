@@ -215,7 +215,7 @@ object Tdd : BuildType({
             type = "octopus.create.release"
             param("secure:octopus_apikey", "credentialsJSON:76162b23-1358-46ea-8823-ca95bfad6401")
             param("octopus_releasenumber", "%build.number%")
-            param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:${'$'}(TDD-Resource-Group) --variable=container_app_name:${'$'}(TDD-App-Name)")
+            param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:%TDD-Resource-Group%-%build.number% --variable=container_app_name:%TDD-App-Name%")
             param("octopus_space_name", "%OctoSpaceName%")
             param("octopus_waitfordeployments", "true")
             param("octopus_version", "3.0+")
