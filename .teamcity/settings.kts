@@ -41,8 +41,9 @@ project {
         param("OctoURL", "https://clearmeasure.octopus.app/")
         param("env.BuildConfiguration", "Release")
         password("OctoApiKey", "credentialsJSON:959b363e-7a9f-4706-86fa-532f285020e7", label = "OctoApiKey")
-        param("env.BUILD_BUILDNUMBER", "%build.number%")
         param("OctoSpaceName", "Onion DevOps")
+        param("env.BUILD_BUILDNUMBER", "%build.number%")
+        param("OctoProject", "teamcity-dotnet-7-container-apps")
         param("env.Version", "%build.number%")
     }
 
