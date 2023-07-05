@@ -53,7 +53,10 @@ object Build : BuildType({
         powerShell {
             name = "Install UI nupkg"
             scriptMode = script {
-                content = """nuget install ChurchBulletin.UI -Version %env.BUILD_BUILDNUMBER% -Source build\"""
+                content = """
+                    nuget install ChurchBulletin.UI -Version %env.BUILD_BUILDNUMBER% -Source build\
+                    mv ChurchBulletin.UI.${'$'}{{ env.BUILD_BUILDNUMBER }} built
+                """.trimIndent()
             }
         }
     }
