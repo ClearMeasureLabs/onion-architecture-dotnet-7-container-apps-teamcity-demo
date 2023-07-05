@@ -46,6 +46,15 @@ object Build : BuildType({
         root(DslContext.settingsRoot)
     }
 
+    steps {
+        powerShell {
+            name = "Install UI nupkg"
+            scriptMode = script {
+                content = """nuget install ChurchBulletin.UI -Version %env.BUILD_BUILDNUMBER% -Source build\"""
+            }
+        }
+    }
+
     triggers {
         vcs {
         }
