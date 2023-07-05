@@ -68,7 +68,7 @@ object Build : BuildType({
             scriptMode = script {
                 content = """
                     nuget install ChurchBulletin.UI -Version %build.number% -Source build\
-                    mv ChurchBulletin.UI.${'$'}{{ env.BUILD_BUILDNUMBER }} built
+                    mv ChurchBulletin.UI.%build.number% built
                 """.trimIndent()
             }
         }
