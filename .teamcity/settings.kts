@@ -68,6 +68,7 @@ object Build : BuildType({
             scriptMode = script {
                 content = """
                     dir
+                    Get-ChildItem -Path build
                     ${'$'}nupkgPath = "build/ChurchBulleint.UI.%build.number%.nupkg"
                     ${'$'}destinationPath = "built"
                     
