@@ -100,6 +100,9 @@ object Build : BuildType({
         perfmon {
         }
         dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_3"
+            }
         }
     }
 
