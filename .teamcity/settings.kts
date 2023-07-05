@@ -216,4 +216,9 @@ object Tdd : BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        snapshot(Build) {
+        }
+    }
 })
