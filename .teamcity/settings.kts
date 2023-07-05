@@ -86,7 +86,6 @@ object Build : BuildType({
                 }
                 contextDir = "."
                 namesAndTags = "churchbulletin.ui:%build.number%"
-                commandArgs = "--pull"
             }
         }
         dockerCommand {
