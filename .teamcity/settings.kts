@@ -42,6 +42,7 @@ project {
         param("env.BuildConfiguration", "Release")
         param("TDD-Resource-Group", "onion-architecture-dotnet-7-containers-TDD")
         password("OctoApiKey", "credentialsJSON:959b363e-7a9f-4706-86fa-532f285020e7", label = "OctoApiKey")
+        param("TDD-App-Name", "tdd-ui")
         param("OctoProject", "teamcity-dotnet-7-container-apps")
         param("OctoSpaceName", "Onion DevOps")
         param("env.BUILD_BUILDNUMBER", "%build.number%")
