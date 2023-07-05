@@ -67,11 +67,13 @@ object Build : BuildType({
             name = "Install UI nupkg"
             scriptMode = script {
                 content = """
-                    ${'$'}nupkgPath = buil\ChurchBulleint.UI. %build.number%.nupkg
+                    ${'$'}nupkgPath = "build\ChurchBulleint.UI. %build.number%.nupkg"
+                    
+                    ${'$'}destinationPath = ".\built"
                     
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     
-                    [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}nupkgPath, built)
+                    [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}nupkgPath, ${'$'}destinationPath)
                 """.trimIndent()
             }
         }
