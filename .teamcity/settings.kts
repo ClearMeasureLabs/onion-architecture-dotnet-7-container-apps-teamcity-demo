@@ -37,6 +37,7 @@ project {
         param("env.BuildConfiguration", "Release")
         param("env.Version", "%build.number%")
     }
+    buildTypesOrder = arrayListOf(IntegrationBuild, Build)
 }
 
 object Build : BuildType({
