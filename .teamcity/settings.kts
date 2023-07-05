@@ -135,10 +135,6 @@ object IntegrationBuild : BuildType({
     artifactRules = """build\*.nupkg"""
     buildNumberPattern = "3.0.%build.counter%"
 
-    params {
-        param("OctoSpace", "Spaces-195")
-    }
-
     vcs {
         root(DslContext.settingsRoot)
     }
