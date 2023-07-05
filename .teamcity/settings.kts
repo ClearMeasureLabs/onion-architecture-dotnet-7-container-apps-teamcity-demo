@@ -132,6 +132,7 @@ object IntegrationBuild : BuildType({
     buildNumberPattern = "3.0.%build.counter%"
 
     params {
+        param("OctoSpace", "Spaces-195")
         password("OctoApiKey", "credentialsJSON:17f0e7e1-518d-4cd1-b427-7365685fa010")
     }
 
