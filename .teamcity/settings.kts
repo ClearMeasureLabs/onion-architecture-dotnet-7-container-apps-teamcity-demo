@@ -119,7 +119,7 @@ object Build : BuildType({
 
             artifacts {
                 cleanDestination = true
-                artifactRules = "ChurchBulletin.UI.%build.number%.nupkg=>build"
+                artifactRules = "+:**=>build"
             }
         }
     }
