@@ -32,6 +32,7 @@ version = "2023.05"
 
 project {
 
+    buildType(Tdd)
     buildType(IntegrationBuild)
     buildType(Build)
 
@@ -197,5 +198,23 @@ object IntegrationBuild : BuildType({
 
     requirements {
         matches("teamcity.agent.jvm.os.family", "Windows")
+    }
+})
+
+object Tdd : BuildType({
+    name = "TDD"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
     }
 })
