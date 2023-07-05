@@ -67,8 +67,11 @@ object Build : BuildType({
             name = "Install UI nupkg"
             scriptMode = script {
                 content = """
-                    nuget install ChurchBulletin.UI -Version %build.number% -Source build\
-                    mv ChurchBulletin.UI.%build.number% built
+                    ${'$'}nupkgPath = buil\ChurchBulleint.UI. %build.number%.nupkg
+                    
+                    Add-Type -AssemblyName System.IO.Compression.FileSystem
+                    
+                    [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}nupkgPath, built)
                 """.trimIndent()
             }
         }
