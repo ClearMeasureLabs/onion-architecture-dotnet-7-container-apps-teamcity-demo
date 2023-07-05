@@ -205,6 +205,8 @@ object IntegrationBuild : BuildType({
 object Tdd : BuildType({
     name = "TDD"
 
+    buildNumberPattern = "%dep.OnionArchitectureDotnet7ContainerApps_DockerBuildAndPush.build.number%"
+
     vcs {
         root(DslContext.settingsRoot)
     }
