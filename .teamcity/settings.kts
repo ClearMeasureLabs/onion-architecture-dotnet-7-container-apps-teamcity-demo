@@ -57,9 +57,14 @@ object Build : BuildType({
     }
 
     dependencies {
-        artifacts(IntegrationBuild) {
-            cleanDestination = true
-            artifactRules = "***"
+        dependency(IntegrationBuild) {
+            snapshot {
+            }
+
+            artifacts {
+                cleanDestination = true
+                artifactRules = "***"
+            }
         }
     }
 })
