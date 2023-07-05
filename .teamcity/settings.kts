@@ -136,7 +136,6 @@ object IntegrationBuild : BuildType({
     buildNumberPattern = "3.0.%build.counter%"
 
     params {
-        param("OctoServer", "https://clearmeasure.octopus.app/")
         param("OctoSpace", "Spaces-195")
     }
 
