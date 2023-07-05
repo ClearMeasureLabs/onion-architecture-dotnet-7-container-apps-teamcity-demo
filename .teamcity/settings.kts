@@ -40,7 +40,7 @@ project {
 }
 
 object Build : BuildType({
-    name = "Build"
+    name = "DockerBuildAndPush"
 
     vcs {
         root(DslContext.settingsRoot)
