@@ -41,9 +41,9 @@ project {
         param("OctoURL", "https://clearmeasure.octopus.app/")
         param("env.BuildConfiguration", "Release")
         password("OctoApiKey", "credentialsJSON:959b363e-7a9f-4706-86fa-532f285020e7", label = "OctoApiKey")
+        param("OctoProject", "teamcity-dotnet-7-container-apps")
         param("OctoSpaceName", "Onion DevOps")
         param("env.BUILD_BUILDNUMBER", "%build.number%")
-        param("OctoProject", "teamcity-dotnet-7-container-apps")
         param("env.Version", "%build.number%")
     }
 
@@ -205,6 +205,24 @@ object Tdd : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+    }
+
+    steps {
+        step {
+            name = "Create and Deploy Release"
+            type = "octopus.create.release"
+            param("secure:octopus_apikey", "credentialsJSON:76162b23-1358-46ea-8823-ca95bfad6401")
+            param("octopus_releasenumber", "%build.number%")
+            param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:${'$'}(TDD-Resource-Group) --variable=container_app_name:${'$'}(TDD-App-Name)")
+            param("octopus_space_name", "%OctoSpaceName%")
+            param("octopus_waitfordeployments", "true")
+            param("octopus_version", "3.0+")
+            param("octopus_host", "%OctoURL%")
+            param("octopus_project_name", "%OctoProject%")
+            param("octopus_deploymenttimeout", "00:30:00")
+            param("octopus_deployto", "TDD")
+            param("octopus_git_ref", "%teamcity.build.branch%")
+        }
     }
 
     triggers {
