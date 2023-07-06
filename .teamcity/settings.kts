@@ -50,6 +50,7 @@ project {
         param("env.BUILD_BUILDNUMBER", "%build.number%")
         password("AzTenant", "credentialsJSON:d16337c7-5751-4ecd-9110-f82755b0ebca")
         param("env.Version", "%build.number%")
+        param("AzAppId", "767d5e60-4d25-4794-9a4d-f714fab829e0")
     }
 
     features {
