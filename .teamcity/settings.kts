@@ -254,6 +254,9 @@ object Tdd : BuildType({
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     
                     [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}nupkgPath, ${'$'}destinationPath)
+                    
+                    Get-ChildItem -Path . | Select-Object -Property Name
+                    Get-ChildItem -Path ChurchBulletin.AcceptanceTests.%build.number%.nupkg | Select-Object -Property Name
                 """.trimIndent()
             }
         }
