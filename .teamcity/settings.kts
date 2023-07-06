@@ -48,6 +48,7 @@ project {
         param("OctoProject", "teamcity-dotnet-7-container-apps")
         param("OctoSpaceName", "Onion DevOps")
         param("env.BUILD_BUILDNUMBER", "%build.number%")
+        password("AzTenant", "credentialsJSON:d16337c7-5751-4ecd-9110-f82755b0ebca")
         param("env.Version", "%build.number%")
     }
 
