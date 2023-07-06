@@ -263,8 +263,8 @@ object Tdd : BuildType({
             name = "Run Acceptance Tests"
             assemblies = """
                 **\*AcceptanceTests.dll
-                !**\*TestAdapter.dll
-                !**\obj\**
+                !*TestAdapter.dll
+                !obj\**
             """.trimIndent()
             version = DotnetVsTestStep.VSTestVersion.CrossPlatform
             platform = DotnetVsTestStep.Platform.Auto
