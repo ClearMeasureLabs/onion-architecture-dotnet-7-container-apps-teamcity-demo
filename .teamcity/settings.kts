@@ -232,18 +232,6 @@ object Tdd : BuildType({
             param("octopus_deployto", "TDD")
             param("octopus_git_ref", "%teamcity.build.branch%")
         }
-        dotnetVsTest {
-            name = "Run Acceptance Tests"
-            assemblies = """
-                **\*AcceptanceTests.dll
-                !**\*TestAdapter.dll
-                !**\obj\**
-            """.trimIndent()
-            workingDir = "./ChurchBulletin.AcceptanceTests.%build.number%"
-            version = DotnetVsTestStep.VSTestVersion.CrossPlatform
-            platform = DotnetVsTestStep.Platform.Auto
-            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
-        }
         powerShell {
             name = "Get Container App URL"
             scriptMode = script {
@@ -259,6 +247,18 @@ object Tdd : BuildType({
                     [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
                 """.trimIndent()
             }
+        }
+        dotnetVsTest {
+            name = "Run Acceptance Tests"
+            assemblies = """
+                **\*AcceptanceTests.dll
+                !**\*TestAdapter.dll
+                !**\obj\**
+            """.trimIndent()
+            workingDir = "./ChurchBulletin.AcceptanceTests.%build.number%"
+            version = DotnetVsTestStep.VSTestVersion.CrossPlatform
+            platform = DotnetVsTestStep.Platform.Auto
+            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
     }
 
