@@ -254,15 +254,15 @@ object Tdd : BuildType({
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     
                     [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}nupkgPath, ${'$'}destinationPath)
-                    
+                    ${'$'}currentPath = (Get-Location).Path
                     # Set the download URL for the Chrome driver
                     ${'$'}chromeDriverUrl = "http://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip"
-                    ${'$'}chromeDriverPath = "./chromedriver.zip"
+                    ${'$'}chromeDriverPath = "${'$'}currentPath/chromedriver.zip"
                     
                     # Download the Chrome driver
                     Invoke-WebRequest -Uri ${'$'}chromeDriverUrl -OutFile ${'$'}chromeDriverPath
                     
-                    ${'$'}destinationPath = "./chromedriver"
+                    ${'$'}destinationPath = "${'$'}currentPath/chromedriver"
                     
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     
