@@ -261,11 +261,7 @@ object Tdd : BuildType({
         }
         dotnetVsTest {
             name = "Run Acceptance Tests"
-            assemblies = """
-                *AcceptanceTests.dll
-                !*TestAdapter.dll
-                !obj\**
-            """.trimIndent()
+            assemblies = "*AcceptanceTests.dll"
             version = DotnetVsTestStep.VSTestVersion.CrossPlatform
             platform = DotnetVsTestStep.Platform.Auto
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
