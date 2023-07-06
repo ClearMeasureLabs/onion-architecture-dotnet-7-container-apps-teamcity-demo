@@ -249,7 +249,7 @@ object Tdd : BuildType({
             scriptMode = script {
                 content = """
                     ${'$'}nupkgPath = "build/ChurchBulletin.AcceptanceTests.%build.number%.nupkg"
-                    ${'$'}destinationPath = "."
+                    ${'$'}destinationPath = "ChurchBulletin.AcceptanceTests.%build.number%"
                     
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     
