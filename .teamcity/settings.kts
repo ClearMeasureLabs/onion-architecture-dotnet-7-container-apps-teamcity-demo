@@ -40,17 +40,18 @@ project {
 
     params {
         param("OctoSpace", "Spaces-195")
-        param("OctoURL", "https://clearmeasure.octopus.app/")
         param("env.BuildConfiguration", "Release")
         param("TDD-Resource-Group", "onion-architecture-dotnet-7-containers-TDD")
-        password("OctoApiKey", "credentialsJSON:959b363e-7a9f-4706-86fa-532f285020e7", label = "OctoApiKey")
         param("TDD-App-Name", "tdd-ui")
         param("OctoProject", "teamcity-dotnet-7-container-apps")
         param("OctoSpaceName", "Onion DevOps")
         param("env.BUILD_BUILDNUMBER", "%build.number%")
-        password("AzTenant", "credentialsJSON:d16337c7-5751-4ecd-9110-f82755b0ebca")
-        param("env.Version", "%build.number%")
         param("AzAppId", "767d5e60-4d25-4794-9a4d-f714fab829e0")
+        param("env.Version", "%build.number%")
+        param("OctoURL", "https://clearmeasure.octopus.app/")
+        password("AzPassword", "credentialsJSON:b66a8739-aa0b-4987-a245-07c6907bdd01")
+        password("OctoApiKey", "credentialsJSON:959b363e-7a9f-4706-86fa-532f285020e7", label = "OctoApiKey")
+        password("AzTenant", "credentialsJSON:d16337c7-5751-4ecd-9110-f82755b0ebca")
     }
 
     features {
