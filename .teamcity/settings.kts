@@ -262,10 +262,14 @@ object Tdd : BuildType({
                     # Download the Chrome driver
                     Invoke-WebRequest -Uri ${'$'}chromeDriverUrl -OutFile ${'$'}chromeDriverPath
                     
+                    ${'$'}destinationPath = "./chromedriver"
                     
-                    Expand-Archive -Path ${'$'}chromeDriverPath -DestinationPath .
+                    Add-Type -AssemblyName System.IO.Compression.FileSystem
+                    
+                    [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}chromeDriverPath, ${'$'}destinationPath)
+                    
                     # Add the Chrome driver to the PATH environment variable
-                    ${'$'}env:PATH += ";."
+                    ${'$'}env:PATH += ";${'$'}destinationPath"
                 """.trimIndent()
             }
         }
