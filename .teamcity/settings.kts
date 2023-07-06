@@ -284,5 +284,9 @@ object Tdd : BuildType({
     dependencies {
         snapshot(Build) {
         }
+        artifacts(IntegrationBuild) {
+            buildRule = lastSuccessful()
+            artifactRules = "+:**=>/build"
+        }
     }
 })
