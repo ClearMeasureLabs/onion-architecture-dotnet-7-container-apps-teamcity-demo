@@ -80,8 +80,6 @@ object Build : BuildType({
             name = "Install UI nupkg"
             scriptMode = script {
                 content = """
-                    dir
-                    Get-ChildItem -Path build | Select-Object -Property Name
                     ${'$'}nupkgPath = "build/ChurchBulletin.UI.%build.number%.nupkg"
                     ${'$'}destinationPath = "built"
                     
