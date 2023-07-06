@@ -264,7 +264,6 @@ object Tdd : BuildType({
                 !**\*TestAdapter.dll
                 !**\obj\**
             """.trimIndent()
-            workingDir = "./ChurchBulletin.AcceptanceTests.%build.number%"
             version = DotnetVsTestStep.VSTestVersion.CrossPlatform
             platform = DotnetVsTestStep.Platform.Auto
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
