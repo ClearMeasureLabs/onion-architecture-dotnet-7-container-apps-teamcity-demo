@@ -244,18 +244,6 @@ object Tdd : BuildType({
                 """.trimIndent()
             }
         }
-        dotnetVsTest {
-            name = "Run Acceptance Tests"
-            assemblies = """
-                **\*AcceptanceTests.dll
-                !**\*TestAdapter.dll
-                !**\obj\**
-            """.trimIndent()
-            workingDir = "./ChurchBulletin.AcceptanceTests.%build.number%"
-            version = DotnetVsTestStep.VSTestVersion.CrossPlatform
-            platform = DotnetVsTestStep.Platform.Auto
-            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
-        }
         powerShell {
             name = "Download Acceptance Test Package"
             scriptMode = script {
@@ -268,6 +256,18 @@ object Tdd : BuildType({
                     [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}nupkgPath, ${'$'}destinationPath)
                 """.trimIndent()
             }
+        }
+        dotnetVsTest {
+            name = "Run Acceptance Tests"
+            assemblies = """
+                **\*AcceptanceTests.dll
+                !**\*TestAdapter.dll
+                !**\obj\**
+            """.trimIndent()
+            workingDir = "./ChurchBulletin.AcceptanceTests.%build.number%"
+            version = DotnetVsTestStep.VSTestVersion.CrossPlatform
+            platform = DotnetVsTestStep.Platform.Auto
+            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
     }
 
