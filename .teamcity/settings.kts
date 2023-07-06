@@ -262,7 +262,7 @@ object Tdd : BuildType({
         dotnetVsTest {
             name = "Run Acceptance Tests"
             assemblies = """
-                *AcceptanceTests.dll
+                **\*AcceptanceTests.dll
                 !**\*TestAdapter.dll
                 !**\obj\**
             """.trimIndent()
