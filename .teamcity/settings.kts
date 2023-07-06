@@ -244,7 +244,8 @@ object Tdd : BuildType({
                     az login --service-principal --username %AzAppId% --password %AzPassword% --tenant %AzTenant%
                     ${'$'}containerAppURL = az containerapp show --resource-group %TDD-Resource-Group%-%build.number% --name %TDD-App-Name% --query properties.configuration.ingress.fqdn
                     ${'$'}containerAppURL = ${'$'}containerAppURL -replace '"', ''
-                    [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
+                    # Set the containerAppURL as an environment variable for the test assemblies to use
+                    Write-Host "##teamcity[setParameter name='env.containerAppURL' value=' ${'$'}containerAppURL']"
                 """.trimIndent()
             }
         }
