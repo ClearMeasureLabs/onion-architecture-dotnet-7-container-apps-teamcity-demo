@@ -258,17 +258,11 @@ object Tdd : BuildType({
                     # Set the download URL for the Chrome driver
                     ${'$'}chromeDriverUrl = "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
                     
-                    # Set the download path for the Chrome driver
-                    ${'$'}chromeDriverPath = "${'$'}env:TEMP\chromedriver.zip"
-                    
                     # Download the Chrome driver
-                    Invoke-WebRequest -Uri ${'$'}chromeDriverUrl -OutFile ${'$'}chromeDriverPath
-                    
-                    # Extract the Chrome driver
-                    Expand-Archive -Path ${'$'}chromeDriverPath -DestinationPath ${'$'}env:TEMP
+                    Invoke-WebRequest -Uri ${'$'}chromeDriverUrl
                     
                     # Add the Chrome driver to the PATH environment variable
-                    ${'$'}env:PATH += ";${'$'}env:TEMP"
+                    ${'$'}env:PATH += ";."
                 """.trimIndent()
             }
         }
