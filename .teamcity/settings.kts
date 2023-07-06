@@ -1,7 +1,9 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetVsTestStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetVsTest
 import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -226,6 +228,18 @@ object Tdd : BuildType({
             param("octopus_deploymenttimeout", "00:30:00")
             param("octopus_deployto", "TDD")
             param("octopus_git_ref", "%teamcity.build.branch%")
+        }
+        dotnetVsTest {
+            name = "Run Acceptance Tests"
+            assemblies = """
+                **\*AcceptanceTests.dll
+                !**\*TestAdapter.dll
+                !**\obj\**
+            """.trimIndent()
+            workingDir = "./ChurchBulletin.AcceptanceTests.%build.number%"
+            version = DotnetVsTestStep.VSTestVersion.CrossPlatform
+            platform = DotnetVsTestStep.Platform.Auto
+            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
     }
 
