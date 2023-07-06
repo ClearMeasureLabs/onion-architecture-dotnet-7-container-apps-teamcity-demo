@@ -256,6 +256,19 @@ object Tdd : BuildType({
             platform = DotnetVsTestStep.Platform.Auto
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
+        powerShell {
+            name = "Download Acceptance Test Package"
+            scriptMode = script {
+                content = """
+                    ${'$'}nupkgPath = "build/ChurchBulletin.AcceptanceTests.%build.number%.nupkg"
+                    ${'$'}destinationPath = "."
+                    
+                    Add-Type -AssemblyName System.IO.Compression.FileSystem
+                    
+                    [System.IO.Compression.ZipFile]::ExtractToDirectory(${'$'}nupkgPath, ${'$'}destinationPath)
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
