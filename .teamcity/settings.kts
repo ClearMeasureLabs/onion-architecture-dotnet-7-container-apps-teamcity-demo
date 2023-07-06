@@ -285,7 +285,6 @@ object Tdd : BuildType({
         snapshot(Build) {
         }
         artifacts(IntegrationBuild) {
-            buildRule = lastSuccessful()
             artifactRules = "+:**=>build"
         }
     }
