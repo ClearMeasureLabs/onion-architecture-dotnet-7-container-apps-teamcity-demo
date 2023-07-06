@@ -268,6 +268,14 @@ object Tdd : BuildType({
                     
                     # Add the Chrome driver to the PATH environment variable
                     ${'$'}env:PATH += ";."
+                    
+                    ${'$'}LocalTempDir = ${'$'}env:TEMP; 
+                    ${'$'}ChromeInstaller = "ChromeInstaller.exe"; 
+                    ${'$'}ChromeInstallerFile = "${'$'}LocalTempDir\${'$'}ChromeInstaller"; 
+                    ${'$'}WebClient = New-Object System.Net.WebClient; 
+                    ${'$'}WebClient.DownloadFile("http://dl.google.com/chrome/install/375.126/chrome_installer.exe", ${'$'}ChromeInstallerFile); 
+                    Start-Process -FilePath ${'$'}ChromeInstallerFile -Args "/silent /install" -Verb RunAs -Wait; 
+                    Remove-Item ${'$'}ChromeInstallerFile
                 """.trimIndent()
             }
         }
