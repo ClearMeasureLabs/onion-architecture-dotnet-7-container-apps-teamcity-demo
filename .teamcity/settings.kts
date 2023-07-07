@@ -218,6 +218,7 @@ object Tdd : BuildType({
         step {
             name = "Create and Deploy Release"
             type = "octopus.create.release"
+            enabled = false
             param("secure:octopus_apikey", "credentialsJSON:76162b23-1358-46ea-8823-ca95bfad6401")
             param("octopus_releasenumber", "%build.number%")
             param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:%TDD-Resource-Group%-%build.number% --variable=container_app_name:%TDD-App-Name%")
