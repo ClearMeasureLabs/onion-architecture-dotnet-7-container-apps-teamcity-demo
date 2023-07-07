@@ -142,6 +142,8 @@ object Build : BuildType({
 object DeleteTdd : BuildType({
     name = "Delete TDD"
 
+    buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+
     vcs {
         root(DslContext.settingsRoot)
     }
