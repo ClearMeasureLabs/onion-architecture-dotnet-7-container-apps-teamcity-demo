@@ -39,6 +39,7 @@ project {
     buildType(Build)
 
     params {
+        param("env.containerAppURL", "")
         param("OctoSpace", "Spaces-195")
         param("env.BuildConfiguration", "Release")
         param("TDD-Resource-Group", "onion-architecture-dotnet-7-containers-TDD")
