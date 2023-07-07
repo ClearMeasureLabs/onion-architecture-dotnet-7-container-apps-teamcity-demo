@@ -181,6 +181,10 @@ object DeleteTdd : BuildType({
         snapshot(Tdd) {
         }
     }
+
+    requirements {
+        matches("teamcity.agent.jvm.os.family", "Windows")
+    }
 })
 
 object IntegrationBuild : BuildType({
