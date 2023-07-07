@@ -305,4 +305,8 @@ object Tdd : BuildType({
             artifactRules = "+:**=>build"
         }
     }
+
+    requirements {
+        matches("teamcity.agent.jvm.os.family", "Windows")
+    }
 })
