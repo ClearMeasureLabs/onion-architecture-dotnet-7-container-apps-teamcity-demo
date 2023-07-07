@@ -256,6 +256,8 @@ object IntegrationBuild : BuildType({
 object Prod : BuildType({
     name = "Prod"
 
+    buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+
     vcs {
         root(DslContext.settingsRoot)
     }
