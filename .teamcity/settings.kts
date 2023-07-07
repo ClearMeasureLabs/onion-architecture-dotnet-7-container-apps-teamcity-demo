@@ -248,7 +248,7 @@ object Tdd : BuildType({
                     ${'$'}containerAppURL = az containerapp show --resource-group %TDD-Resource-Group%-3.0.100 --name %TDD-App-Name% --query properties.configuration.ingress.fqdn
                     ${'$'}containerAppURL = ${'$'}containerAppURL -replace '"', ''
                     Write-Host "url retrieved from AZ: ${'$'}containerAppURL"
-                    #[System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
+                    [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
                     Write-Host "##teamcity[setParameter name='env.containerAppURL' value='${'$'}containerAppURL']"
                     Write-Host "ContainerAppURl after retrieval: ${'$'}env:containerAppURL"
                 """.trimIndent()
