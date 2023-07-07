@@ -38,6 +38,7 @@ project {
     buildType(Uat)
     buildType(IntegrationBuild)
     buildType(Build)
+    buildType(Prod)
     buildType(DeleteTdd)
 
     params {
@@ -249,6 +250,24 @@ object IntegrationBuild : BuildType({
 
     requirements {
         matches("teamcity.agent.jvm.os.family", "Windows")
+    }
+})
+
+object Prod : BuildType({
+    name = "Prod"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
     }
 })
 
