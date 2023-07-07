@@ -67,7 +67,7 @@ project {
             password = "credentialsJSON:b66a8739-aa0b-4987-a245-07c6907bdd01"
         }
     }
-    buildTypesOrder = arrayListOf(IntegrationBuild, Build, Tdd, DeleteTdd)
+    buildTypesOrder = arrayListOf(IntegrationBuild, Build, Tdd, DeleteTdd, Uat, Prod)
 }
 
 object Build : BuildType({
