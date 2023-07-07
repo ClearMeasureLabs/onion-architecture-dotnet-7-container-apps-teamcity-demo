@@ -249,9 +249,8 @@ object Tdd : BuildType({
                     ${'$'}containerAppURL = ${'$'}containerAppURL -replace '"', ''
                     Write-Host "url retrieved from AZ: ${'$'}containerAppURL"
                     [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
-                    Write-Host "##teamcity[setParameter name='env.containerAppURL' value='${'$'}containerAppURL']"
-                    ${'$'}envurl = System.Environment.GetEnvironmentVariable("containerAppURL", EnvironmentVariableTarget.Machine);
-                    Write-Host "ContainerAppURl after retrieval: ${'$'}envurl"
+                    #Write-Host "##teamcity[setParameter name='env.containerAppURL' value='${'$'}containerAppURL']"
+                    Write-Host "ContainerAppURL after retrieval: ${'$'}env:containerAppURL"
                 """.trimIndent()
             }
         }
