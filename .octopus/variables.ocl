@@ -105,18 +105,7 @@ variable "DatabasePerformanceLevel" {
     }
 }
 
-variable "ResourceGroupName" {
-    value "onion-architecture-dotnet-7-containers-#{Octopus.Environment.Name}" {
-        description = ""
-    }
-}
-
 variable "container_app_name" {
-    value "tdd-ui" {
-        description = ""
-        environment = ["tdd"]
-    }
-
     value "uat-ui" {
         description = ""
         environment = ["uat"]
@@ -125,6 +114,16 @@ variable "container_app_name" {
     value "prod-ui" {
         description = ""
         environment = ["prod"]
+    }
+
+    value "tdd-ui" {
+        description = ""
+        environment = ["tdd"]
+
+        prompt {
+            description = ""
+            label = ""
+        }
     }
 }
 
@@ -137,7 +136,7 @@ variable "DatabaseServerName" {
         environment = ["uat"]
     }
 
-    value "#{az_login_appid}-sqlserver" {
+    value "#{az_login_appid}-tdd-#{Octopus.Release.Id | ToLower }" {
         environment = ["tdd"]
     }
 }
@@ -152,4 +151,21 @@ variable "az_login_appkey" {
 
 variable "az_login_tenant" {
     value "#{AzureAccount.TenantId}" {}
+}
+
+variable "ResourceGroupName" {
+    value "onion-architecture-dotnet-7-containers-#{Octopus.Environment.Name}" {
+        description = ""
+        environment = ["uat", "prod"]
+    }
+
+    value "onion-architecture-dotnet-7-containers-#{Octopus.Release.Number}" {
+        description = ""
+        environment = ["tdd"]
+
+        prompt {
+            description = ""
+            label = ""
+        }
+    }
 }
