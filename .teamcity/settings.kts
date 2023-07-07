@@ -262,6 +262,21 @@ object Prod : BuildType({
         root(DslContext.settingsRoot)
     }
 
+    steps {
+        step {
+            name = "Deploy To Prod"
+            type = "octopus.deploy.release"
+            param("octopus_space_name", "%OctoSpaceName%")
+            param("octopus_version", "3.0+")
+            param("octopus_host", "%OctoURL%")
+            param("octopus_project_name", "%OctoProject%")
+            param("octopus_deploymenttimeout", "00:30:00")
+            param("octopus_deployto", "Prod")
+            param("secure:octopus_apikey", "credentialsJSON:76162b23-1358-46ea-8823-ca95bfad6401")
+            param("octopus_releasenumber", "%build.number%")
+        }
+    }
+
     triggers {
         vcs {
         }
