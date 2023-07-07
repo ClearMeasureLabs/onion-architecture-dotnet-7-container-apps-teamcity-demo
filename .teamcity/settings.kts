@@ -37,6 +37,7 @@ project {
     buildType(Tdd)
     buildType(IntegrationBuild)
     buildType(Build)
+    buildType(DeleteTdd)
 
     params {
         param("env.containerAppURL", "")
@@ -132,6 +133,24 @@ object Build : BuildType({
                 cleanDestination = true
                 artifactRules = "+:**=>build"
             }
+        }
+    }
+})
+
+object DeleteTdd : BuildType({
+    name = "Delete TDD"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
         }
     }
 })
