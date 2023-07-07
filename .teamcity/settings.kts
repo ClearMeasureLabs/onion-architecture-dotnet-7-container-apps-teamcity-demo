@@ -174,6 +174,11 @@ object DeleteTdd : BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        snapshot(Tdd) {
+        }
+    }
 })
 
 object IntegrationBuild : BuildType({
