@@ -262,12 +262,12 @@ object Tdd : BuildType({
                     # Download the Chrome driver
                     Invoke-WebRequest -Uri ${'$'}chromeDriverUrl -OutFile ${'$'}chromeDriverPath
                     
-                    ${'$'}destinationPath = "${'$'}currentPath/chromedriver"
+                    ${'$'}chromedriverdestinationPath = "C:\SeleniumWebDrivers\ChromeDriver"
                     
-                    Expand-Archive -Path ${'$'}chromeDriverPath -DestinationPath .
+                    Expand-Archive -Path ${'$'}chromeDriverPath -DestinationPath ${'$'}chromedriverdestinationPath
                     
                     # Add the Chrome driver to the PATH environment variable
-                    ${'$'}env:PATH += ";."
+                    ${'$'}env:PATH += ";${'$'}chromedriverdestinationPath"
                     
                     ${'$'}LocalTempDir = ${'$'}env:TEMP; 
                     ${'$'}ChromeInstaller = "ChromeInstaller.exe"; 
