@@ -360,6 +360,8 @@ object Tdd : BuildType({
 object Uat : BuildType({
     name = "UAT"
 
+    buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+
     vcs {
         root(DslContext.settingsRoot)
     }
