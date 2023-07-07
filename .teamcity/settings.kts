@@ -238,7 +238,7 @@ object Tdd : BuildType({
                     az config set extension.use_dynamic_install=yes_without_prompt
                     # Log in to Azure
                     az login --service-principal --username %AzAppId% --password %AzPassword% --tenant %AzTenant%
-                    ${'$'}containerAppURL = az containerapp show --resource-group %TDD-Resource-Group%-%build.number% --name %TDD-App-Name% --query properties.configuration.ingress.fqdn
+                    ${'$'}containerAppURL = az containerapp show --resource-group %TDD-Resource-Group%-3.0.100 --name %TDD-App-Name% --query properties.configuration.ingress.fqdn
                     ${'$'}containerAppURL = ${'$'}containerAppURL -replace '"', ''
                     # Set the containerAppURL as an environment variable for the test assemblies to use
                     Write-Host "##teamcity[setParameter name='env.containerAppURL' value=' ${'$'}containerAppURL']"
