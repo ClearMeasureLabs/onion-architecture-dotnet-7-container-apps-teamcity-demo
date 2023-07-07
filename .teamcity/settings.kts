@@ -39,6 +39,7 @@ project {
     buildType(Build)
 
     params {
+        param("env.containerAppURL", "")
         param("OctoSpace", "Spaces-195")
         param("env.BuildConfiguration", "Release")
         param("TDD-Resource-Group", "onion-architecture-dotnet-7-containers-TDD")
@@ -241,6 +242,7 @@ object Tdd : BuildType({
                     ${'$'}containerAppURL = az containerapp show --resource-group %TDD-Resource-Group%-3.0.100 --name %TDD-App-Name% --query properties.configuration.ingress.fqdn
                     ${'$'}containerAppURL = ${'$'}containerAppURL -replace '"', ''
                     [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
+                    Write-Host "##teamcity[setParameter name='env.containerAppURL' value=' ${'$'}{'${'$'}'}containerAppURL']"
                 """.trimIndent()
             }
         }
