@@ -236,6 +236,10 @@ object Tdd : BuildType({
             name = "Get Container App URL"
             scriptMode = script {
                 content = """
+                    Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi
+                    Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+                    Remove-Item .\AzureCLI.msi
+                    
                     az config set extension.use_dynamic_install=yes_without_prompt
                     # Log in to Azure
                     az login --service-principal --username %AzAppId% --password %AzPassword% --tenant %AzTenant%
