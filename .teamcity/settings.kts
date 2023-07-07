@@ -271,6 +271,11 @@ object Prod : BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        snapshot(Uat) {
+        }
+    }
 })
 
 object Tdd : BuildType({
