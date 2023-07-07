@@ -250,7 +250,8 @@ object Tdd : BuildType({
                     Write-Host "url retrieved from AZ: ${'$'}containerAppURL"
                     [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
                     Write-Host "##teamcity[setParameter name='env.containerAppURL' value='${'$'}containerAppURL']"
-                    Write-Host "ContainerAppURl after retrieval: ${'$'}env:containerAppURL"
+                    ${'$'}envurl = System.Environment.GetEnvironmentVariable("containerAppURL", EnvironmentVariableTarget.Machine);
+                    Write-Host "ContainerAppURl after retrieval: ${'$'}envurl"
                 """.trimIndent()
             }
         }
