@@ -426,6 +426,7 @@ object Uat : BuildType({
             name = "Deploy To UAT"
             type = "octopus.deploy.release"
             param("octopus_space_name", "%OctoSpaceName%")
+            param("octopus_waitfordeployments", "true")
             param("octopus_version", "3.0+")
             param("octopus_host", "%OctoURL%")
             param("octopus_project_name", "%OctoProject%")
