@@ -373,4 +373,9 @@ object Uat : BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        snapshot(Tdd) {
+        }
+    }
 })
