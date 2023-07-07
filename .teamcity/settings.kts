@@ -35,6 +35,7 @@ version = "2023.05"
 project {
 
     buildType(Tdd)
+    buildType(Uat)
     buildType(IntegrationBuild)
     buildType(Build)
     buildType(DeleteTdd)
@@ -353,5 +354,23 @@ object Tdd : BuildType({
 
     requirements {
         matches("teamcity.agent.jvm.os.family", "Windows")
+    }
+})
+
+object Uat : BuildType({
+    name = "UAT"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
     }
 })
