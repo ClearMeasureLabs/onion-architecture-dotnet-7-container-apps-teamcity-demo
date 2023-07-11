@@ -2,7 +2,7 @@ param(
     [string]$server,
     [string]$version
 )
-
+Start-Sleep -Seconds 90
 $uri = "$server/version"
 Write-Host "Getting version $uri"
 Invoke-WebRequest $uri -UseBasicParsing | Foreach {
