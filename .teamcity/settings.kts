@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetVsTest
 import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
+import jetbrains.buildServer.configs.kotlin.projectFeatures.nuGetFeed
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -65,6 +66,11 @@ project {
             url = "onionarchitecturedotnet7containers.azurecr.io"
             userName = "767d5e60-4d25-4794-9a4d-f714fab829e0"
             password = "credentialsJSON:b66a8739-aa0b-4987-a245-07c6907bdd01"
+        }
+        nuGetFeed {
+            id = "repository-nuget-Onion_Architecture_Container_Apps"
+            name = "Onion_Architecture_Container_Apps"
+            description = ""
         }
     }
     buildTypesOrder = arrayListOf(IntegrationBuild, Build, Tdd, DeleteTdd, Uat, Prod)
