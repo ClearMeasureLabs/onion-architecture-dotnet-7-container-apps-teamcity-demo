@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetVsTestStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetVsTest
+import jetbrains.buildServer.configs.kotlin.buildSteps.nuGetPublish
 import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.projectFeatures.nuGetFeed
@@ -247,6 +248,12 @@ object IntegrationBuild : BuildType({
                     }
                 """.trimIndent()
             }
+        }
+        nuGetPublish {
+            toolPath = "%teamcity.tool.NuGet.CommandLine.6.1.0%"
+            packages = "***"
+            serverUrl = "%teamcity.nuget.feed.httpAuth.OnionArchitectureDotnet7ContainerApps.Onion_Architecture_Container_Apps.v3%"
+            apiKey = "credentialsJSON:d35fc2d0-de68-4547-8605-bd0ce1888698"
         }
     }
 
