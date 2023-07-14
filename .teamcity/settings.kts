@@ -285,11 +285,6 @@ object IntegrationBuild : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     features {
         perfmon {
         }
