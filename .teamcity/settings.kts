@@ -310,11 +310,6 @@ object Prod : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     features {
         perfmon {
         }
