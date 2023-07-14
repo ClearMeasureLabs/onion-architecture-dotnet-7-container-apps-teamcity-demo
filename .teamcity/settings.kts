@@ -421,11 +421,6 @@ object Tdd : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     features {
         perfmon {
         }
