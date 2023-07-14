@@ -459,11 +459,6 @@ object Uat : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     features {
         perfmon {
         }
