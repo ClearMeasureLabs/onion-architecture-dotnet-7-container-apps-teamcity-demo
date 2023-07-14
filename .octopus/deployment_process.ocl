@@ -61,7 +61,7 @@ step "deploy-an-azure-resource-manager-template" {
             Octopus.Action.Azure.ResourceGroupTemplateParameters = "DatabaseARMParameters.json"
             Octopus.Action.Azure.TemplateSource = "Package"
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.FeedId = "onion-arch-tc"
             Octopus.Action.Package.PackageId = "ChurchBulletin.Database"
             OctopusUseBundledTooling = "False"
         }
@@ -69,7 +69,7 @@ step "deploy-an-azure-resource-manager-template" {
 
         packages {
             acquisition_location = "Server"
-            feed = "octopus-server-built-in"
+            feed = "onion-arch-tc"
             package_id = "ChurchBulletin.Database"
             properties = {
                 SelectionMode = "immediate"
@@ -89,7 +89,7 @@ step "create-db-schema" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.FeedId = "onion-arch-tc"
             Octopus.Action.Package.PackageId = "ChurchBulletin.Database"
             Octopus.Action.RunOnServer = "true"
             Octopus.Action.Script.ScriptFileName = "Scripts\\UpdateAzureSql.ps1"
@@ -99,7 +99,7 @@ step "create-db-schema" {
 
         packages {
             acquisition_location = "Server"
-            feed = "octopus-server-built-in"
+            feed = "onion-arch-tc"
             package_id = "ChurchBulletin.Database"
             properties = {
                 SelectionMode = "immediate"
@@ -496,7 +496,7 @@ step "checkversion" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.FeedId = "onion-arch-tc"
             Octopus.Action.Package.PackageId = "ChurchBulletin.Script"
             Octopus.Action.RunOnServer = "true"
             Octopus.Action.Script.ScriptFileName = "CheckVersion.ps1"
@@ -507,7 +507,7 @@ step "checkversion" {
 
         packages {
             acquisition_location = "Server"
-            feed = "octopus-server-built-in"
+            feed = "onion-arch-tc"
             package_id = "ChurchBulletin.Script"
             properties = {
                 SelectionMode = "immediate"
@@ -523,7 +523,7 @@ step "healthcheck" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.Package.DownloadOnTentacle = "False"
-            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.FeedId = "onion-arch-tc"
             Octopus.Action.Package.PackageId = "ChurchBulletin.Script"
             Octopus.Action.RunOnServer = "true"
             Octopus.Action.Script.ScriptFileName = "CallHealthCheckEndpoint.ps1"
@@ -534,7 +534,7 @@ step "healthcheck" {
 
         packages {
             acquisition_location = "Server"
-            feed = "octopus-server-built-in"
+            feed = "onion-arch-tc"
             package_id = "ChurchBulletin.Script"
             properties = {
                 SelectionMode = "immediate"
