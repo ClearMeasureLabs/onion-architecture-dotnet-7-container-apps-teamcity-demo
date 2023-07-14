@@ -168,6 +168,13 @@ object Build_2 : BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        snapshot(DeleteTdd) {
+        }
+        snapshot(Prod) {
+        }
+    }
 })
 
 object DeleteTdd : BuildType({
