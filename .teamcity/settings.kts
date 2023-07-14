@@ -265,6 +265,7 @@ object IntegrationBuild : BuildType({
                     . .\build.ps1 ; CIBuild
                 """.trimIndent()
             }
+            args = "-l:trx;LogFileName=TestOutput.xml"
         }
         nuGetPublish {
             name = "Publish Packages"
