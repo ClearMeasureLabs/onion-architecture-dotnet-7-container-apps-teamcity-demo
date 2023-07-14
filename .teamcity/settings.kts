@@ -202,11 +202,6 @@ object DeleteTdd : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     features {
         perfmon {
         }
