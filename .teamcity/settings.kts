@@ -250,6 +250,7 @@ object IntegrationBuild : BuildType({
             }
         }
         nuGetPublish {
+            name = "Publish Packages"
             toolPath = "%teamcity.tool.NuGet.CommandLine.6.1.0%"
             packages = "**/*.nupkg"
             serverUrl = "%teamcity.nuget.feed.httpAuth.OnionArchitectureDotnet7ContainerApps.Onion_Architecture_Container_Apps.v3%"
