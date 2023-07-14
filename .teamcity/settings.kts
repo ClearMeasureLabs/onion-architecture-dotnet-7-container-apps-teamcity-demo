@@ -148,10 +148,15 @@ object Build : BuildType({
 })
 
 object Build_2 : BuildType({
-    name = "Build"
+    name = "Deploy Application"
+
+    type = BuildTypeSettings.Type.COMPOSITE
+    buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
 
     vcs {
         root(DslContext.settingsRoot)
+
+        showDependenciesChanges = true
     }
 
     triggers {
