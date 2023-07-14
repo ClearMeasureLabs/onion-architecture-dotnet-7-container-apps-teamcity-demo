@@ -224,6 +224,10 @@ object IntegrationBuild : BuildType({
     artifactRules = """build\*.nupkg"""
     buildNumberPattern = "3.0.%build.counter%"
 
+    params {
+        param("dotnet.cli.test.reporting", "off")
+    }
+
     vcs {
         root(DslContext.settingsRoot)
     }
