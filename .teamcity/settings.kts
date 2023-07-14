@@ -221,7 +221,10 @@ object IntegrationBuild : BuildType({
     name = "Integration Build"
 
     allowExternalStatus = true
-    artifactRules = """build\*.nupkg"""
+    artifactRules = """
+        build\*.nupkg
+        **/TestOutput.xml => TestResults.zip
+    """.trimIndent()
     buildNumberPattern = "3.0.%build.counter%"
 
     params {
