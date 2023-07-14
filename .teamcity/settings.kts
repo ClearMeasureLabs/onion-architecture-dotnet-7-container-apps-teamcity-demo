@@ -36,6 +36,7 @@ version = "2023.05"
 
 project {
 
+    buildType(Build_2)
     buildType(Tdd)
     buildType(Uat)
     buildType(IntegrationBuild)
@@ -142,6 +143,24 @@ object Build : BuildType({
                 cleanDestination = true
                 artifactRules = "+:**=>build"
             }
+        }
+    }
+})
+
+object Build_2 : BuildType({
+    name = "Build"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
         }
     }
 })
