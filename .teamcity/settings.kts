@@ -332,6 +332,9 @@ object Prod : BuildType({
     features {
         perfmon {
         }
+        approval {
+            approvalRules = "group:ALL_USERS_GROUP:1"
+        }
     }
 
     dependencies {
