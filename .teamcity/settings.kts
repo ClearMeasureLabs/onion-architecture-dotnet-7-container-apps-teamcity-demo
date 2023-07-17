@@ -1,6 +1,8 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.XmlReport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildFeatures.xmlReport
 import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetVsTestStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetVsTest
@@ -285,6 +287,10 @@ object IntegrationBuild : BuildType({
 
     features {
         perfmon {
+        }
+        xmlReport {
+            reportType = XmlReport.XmlReportType.TRX
+            rules = "build/test/**/*.trx"
         }
     }
 
