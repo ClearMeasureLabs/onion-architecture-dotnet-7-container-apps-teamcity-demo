@@ -276,7 +276,7 @@ object IntegrationBuild : BuildType({
                     . .\build.ps1 ; CIBuild
                     
                     dotnet tool install --global dotnet-reportgenerator-globaltool
-                    ${'$'}coverageFile = "build\test\**\In\**\coverage.cobertura.xml"
+                    ${'$'}coverageFile = Get-ChildItem -Path "build\test\**\In\**\coverage.cobertura.xml" -File | Select-Object -First 1 -ExpandProperty FullName
                     ${'$'}outputDir = "build\reports"
                     reportgenerator "-reports:${'$'}coverageFile" "-targetdir:${'$'}outputDir"
                 """.trimIndent()
