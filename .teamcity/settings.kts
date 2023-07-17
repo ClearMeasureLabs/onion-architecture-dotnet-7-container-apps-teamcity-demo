@@ -307,7 +307,10 @@ object IntegrationBuild : BuildType({
 object Prod : BuildType({
     name = "Prod"
 
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
     buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+    maxRunningBuilds = 1
 
     vcs {
         root(DslContext.settingsRoot)
