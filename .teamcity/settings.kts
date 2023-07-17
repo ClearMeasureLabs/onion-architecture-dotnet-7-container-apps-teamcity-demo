@@ -226,7 +226,7 @@ object IntegrationBuild : BuildType({
     allowExternalStatus = true
     artifactRules = """
         build/*.nupkg
-        build.reports => coverage.zip
+        build/reports => coverage.zip
     """.trimIndent()
     buildNumberPattern = "3.0.%build.counter%"
 
