@@ -273,6 +273,11 @@ object IntegrationBuild : BuildType({
                     
                     # Run build script
                     . .\build.ps1 ; CIBuild
+                    
+                    dotnet tool install --global dotnet-reportgenerator-globaltool
+                    ${'$'}coverageFile = "/build/test/**/In/**/coverage.cobertura.xml"
+                    ${'$'}outputDir = "/build/reports"
+                    reportgenerator "-reports:${'$'}coverageFile" "-targetdir:${'$'}outputDir"
                 """.trimIndent()
             }
         }
