@@ -290,7 +290,7 @@ object IntegrationBuild : BuildType({
             rules = "build/test/**/*.trx"
         }
         xmlReport {
-            reportType = XmlReport.XmlReportType.MSTEST
+            reportType = XmlReport.XmlReportType.VSTEST
             rules = "/**/build/test/**/In/**/coverage.cobertura.xml"
         }
     }
