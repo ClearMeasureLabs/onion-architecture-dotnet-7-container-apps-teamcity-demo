@@ -450,7 +450,10 @@ object Tdd : BuildType({
 object Uat : BuildType({
     name = "UAT"
 
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
     buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+    maxRunningBuilds = 1
 
     vcs {
         root(DslContext.settingsRoot)
