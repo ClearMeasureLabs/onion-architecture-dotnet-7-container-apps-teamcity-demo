@@ -270,10 +270,6 @@ object IntegrationBuild : BuildType({
                     
                     # Run build script
                     . .\build.ps1 ; CIBuild
-                    
-                    ${'$'}TestOutput = dotnet test --test "XPlat Code Coverage"
-                    ${'$'}CoverageReports = ${'$'}TestOutput | Select-String coverage.cobertura.xml | ForEach-Object { ${'$'}_.Line.Trim() } | Join-String -Separator ';'
-                    dotnet reportgenerator "-reports:${'$'}CoverageReports" "-targetdir:./CoverageReport" "-reporttype:Html"
                 """.trimIndent()
             }
         }
