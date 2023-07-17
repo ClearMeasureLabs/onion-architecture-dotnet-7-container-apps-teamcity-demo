@@ -349,7 +349,10 @@ object Prod : BuildType({
 object Tdd : BuildType({
     name = "TDD"
 
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
     buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+    maxRunningBuilds = 1
 
     vcs {
         root(DslContext.settingsRoot)
