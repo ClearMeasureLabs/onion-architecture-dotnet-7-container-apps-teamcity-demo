@@ -277,7 +277,7 @@ object IntegrationBuild : BuildType({
                     
                     dotnet tool install --global dotnet-reportgenerator-globaltool
                     
-                    ${'$'}coverageFile = Get-ChildItem -Path build -Filter coverage.cobertura.xml -Recurse -File | Select-Object -First 1 -ExpandProperty FullName
+                    ${'$'}coverageFile = "build\test\**\In\**\coverage.cobertura.xml"
                     ${'$'}outputDir = "build\reports"
                     reportgenerator "-reports:${'$'}coverageFile" "-targetdir:${'$'}outputDir"
                 """.trimIndent()
