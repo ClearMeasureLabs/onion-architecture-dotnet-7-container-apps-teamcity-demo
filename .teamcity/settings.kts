@@ -227,7 +227,6 @@ object IntegrationBuild : BuildType({
     artifactRules = """
         build/*.nupkg
         build/reports => coverage.zip
-        build/test/**/In/**/coverage.cobertura.xml => coverage.zip
     """.trimIndent()
     buildNumberPattern = "3.0.%build.counter%"
 
