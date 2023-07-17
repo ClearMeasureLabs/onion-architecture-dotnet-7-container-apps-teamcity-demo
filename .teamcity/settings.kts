@@ -292,10 +292,6 @@ object IntegrationBuild : BuildType({
             reportType = XmlReport.XmlReportType.TRX
             rules = "build/test/**/*.trx"
         }
-        xmlReport {
-            reportType = XmlReport.XmlReportType.VSTEST
-            rules = "/**/build/test/**/In/**/coverage.cobertura.xml"
-        }
     }
 
     requirements {
