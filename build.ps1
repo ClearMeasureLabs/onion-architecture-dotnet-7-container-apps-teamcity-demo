@@ -175,29 +175,11 @@ Function PrivateBuild{
 Function CIBuild{
 	$sw = [Diagnostics.Stopwatch]::StartNew()
 	Init
-	$step = "Init time:"
-	$timer = $sw.Elapsed.ToString()
-	Write-Host "##teamcity[message text='$step $timer']"
 	Compile
-	$step = "Compile time:"
-	$timer = $sw.Elapsed.ToString()
-	Write-Host "##teamcity[message text='$step $timer']"
 	UnitTests
-	$step = "Unit Testing time:"
-	$timer = $sw.Elapsed.ToString()
-	Write-Host "##teamcity[message text='$step $timer']"	
 	MigrateDatabaseLocal
-	$step = "Migrate DB time:"
-	$timer = $sw.Elapsed.ToString()
-	Write-Host "##teamcity[message text='$step $timer']"
 	IntegrationTest
-	$step = "Integration Testing time:"
-	$timer = $sw.Elapsed.ToString()
-	Write-Host "##teamcity[message text='$step $timer']"
 	Package
-	$step = "Package time:"
-	$timer = $sw.Elapsed.ToString()
-	Write-Host "##teamcity[message text='$step $timer']"
 	$sw.Stop()
 	write-host "BUILD SUCCEEDED - Build time: " $sw.Elapsed.ToString() -ForegroundColor Green
 }
