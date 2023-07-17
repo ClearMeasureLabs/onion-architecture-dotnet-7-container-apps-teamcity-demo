@@ -290,7 +290,7 @@ object IntegrationBuild : BuildType({
         }
         xmlReport {
             reportType = XmlReport.XmlReportType.MSTEST
-            rules = "build/test/**/In/**/coverage.cobertura.xml"
+            rules = "/**/build/test/**/In/**/coverage.cobertura.xml"
         }
     }
 
