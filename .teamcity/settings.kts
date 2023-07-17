@@ -1,6 +1,9 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.XmlReport
+import jetbrains.buildServer.configs.kotlin.buildFeatures.approval
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildFeatures.xmlReport
 import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetVsTestStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetVsTest
@@ -221,8 +224,15 @@ object IntegrationBuild : BuildType({
     name = "Integration Build"
 
     allowExternalStatus = true
-    artifactRules = """build\*.nupkg"""
+    artifactRules = """
+        build\*.nupkg
+        build/test/**/In/**/coverage.cobertura.xml => coverage.zip
+    """.trimIndent()
     buildNumberPattern = "3.0.%build.counter%"
+
+    params {
+        param("dotnet.cli.test.reporting", "off")
+    }
 
     vcs {
         root(DslContext.settingsRoot)
@@ -278,6 +288,10 @@ object IntegrationBuild : BuildType({
     features {
         perfmon {
         }
+        xmlReport {
+            reportType = XmlReport.XmlReportType.TRX
+            rules = "build/test/**/*.trx"
+        }
     }
 
     requirements {
@@ -288,7 +302,10 @@ object IntegrationBuild : BuildType({
 object Prod : BuildType({
     name = "Prod"
 
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
     buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+    maxRunningBuilds = 1
 
     vcs {
         root(DslContext.settingsRoot)
@@ -313,6 +330,9 @@ object Prod : BuildType({
     features {
         perfmon {
         }
+        approval {
+            approvalRules = "group:ALL_USERS_GROUP:1"
+        }
     }
 
     dependencies {
@@ -324,7 +344,10 @@ object Prod : BuildType({
 object Tdd : BuildType({
     name = "TDD"
 
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
     buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+    maxRunningBuilds = 1
 
     vcs {
         root(DslContext.settingsRoot)
@@ -432,7 +455,10 @@ object Tdd : BuildType({
 object Uat : BuildType({
     name = "UAT"
 
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
     buildNumberPattern = "${IntegrationBuild.depParamRefs.buildNumber}"
+    maxRunningBuilds = 1
 
     vcs {
         root(DslContext.settingsRoot)
@@ -456,6 +482,9 @@ object Uat : BuildType({
 
     features {
         perfmon {
+        }
+        approval {
+            approvalRules = "group:ALL_USERS_GROUP:1"
         }
     }
 
