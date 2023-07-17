@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.XmlReport
+import jetbrains.buildServer.configs.kotlin.buildFeatures.approval
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.xmlReport
@@ -477,6 +478,9 @@ object Uat : BuildType({
 
     features {
         perfmon {
+        }
+        approval {
+            approvalRules = "group:ALL_USERS_GROUP:1"
         }
     }
 
