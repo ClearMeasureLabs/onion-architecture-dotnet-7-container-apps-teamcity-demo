@@ -288,7 +288,7 @@ object IntegrationBuild : BuildType({
             toolPath = "%teamcity.tool.NuGet.CommandLine.6.1.0%"
             packages = "**/*.nupkg"
             serverUrl = "%teamcity.nuget.feed.httpAuth.OnionArchitectureDotnet7ContainerApps.Onion_Architecture_Container_Apps.v3%"
-            apiKey = "credentialsJSON:d35fc2d0-de68-4547-8605-bd0ce1888698"
+            apiKey = "%teamcity.nuget.feed.api.key%"
         }
     }
 
