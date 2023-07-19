@@ -335,7 +335,7 @@ object Prod : BuildType({
             param("octopus_project_name", "%OctoProject%")
             param("octopus_deploymenttimeout", "00:30:00")
             param("octopus_deployto", "Prod")
-            param("secure:octopus_apikey", "credentialsJSON:76162b23-1358-46ea-8823-ca95bfad6401")
+            param("secure:octopus_apikey", "%OctoApiKey%")
             param("octopus_releasenumber", "%build.number%")
         }
     }
@@ -370,7 +370,7 @@ object Tdd : BuildType({
         step {
             name = "Create and Deploy Release"
             type = "octopus.create.release"
-            param("secure:octopus_apikey", "credentialsJSON:76162b23-1358-46ea-8823-ca95bfad6401")
+            param("secure:octopus_apikey", "%OctoApiKey%")
             param("octopus_releasenumber", "%build.number%")
             param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:%TDD-Resource-Group%-%build.number% --variable=container_app_name:%TDD-App-Name%")
             param("octopus_space_name", "%OctoSpaceName%")
@@ -488,7 +488,7 @@ object Uat : BuildType({
             param("octopus_project_name", "%OctoProject%")
             param("octopus_deploymenttimeout", "00:30:00")
             param("octopus_deployto", "UAT")
-            param("secure:octopus_apikey", "credentialsJSON:76162b23-1358-46ea-8823-ca95bfad6401")
+            param("secure:octopus_apikey", "%OctoApiKey%")
             param("octopus_releasenumber", "%build.number%")
         }
     }
