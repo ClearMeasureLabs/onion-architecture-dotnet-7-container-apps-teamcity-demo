@@ -26,7 +26,7 @@ public class CounterIncrementsTester
     public void ShouldIncrementOnPress(int numberOfButtonPresses, int expectedFinalCount)
     {
         //arrange
-        var hostAddress = System.Environment.GetEnvironmentVariable("containerAppURL", EnvironmentVariableTarget.Machine);
+        var hostAddress = System.Environment.GetEnvironmentVariable("containerAppURL", EnvironmentVariableTarget.User);
         Console.WriteLine("url:" + $"https://{hostAddress}/counter");
         _driver.Navigate().GoToUrl($"https://{hostAddress}/counter");
         var xPathForButton = By.CssSelector("button[ref='clickMeButton2']");
