@@ -294,7 +294,7 @@ object IntegrationBuild : BuildType({
             toolPath = "%teamcity.tool.NuGet.CommandLine.6.1.0%"
             packages = "**/*.nupkg"
             serverUrl = "%teamcity.nuget.feed.httpAuth.OnionArchitectureDotnet7ContainerApps.Onion_Architecture_Container_Apps.v3%"
-            apiKey = "%teamcity.nuget.feed.api.key%"
+            apiKey = "credentialsJSON:2e7b8cca-c26f-4706-9120-8f8ae161cd5d"
         }
     }
 
@@ -335,7 +335,7 @@ object Prod : BuildType({
             param("octopus_project_name", "%OctoProject%")
             param("octopus_deploymenttimeout", "00:30:00")
             param("octopus_deployto", "Prod")
-            param("secure:octopus_apikey", "%OctoApiKey%")
+            param("secure:octopus_apikey", "credentialsJSON:5923eadd-621b-4e8a-9b46-42d1fbbc65c6")
             param("octopus_releasenumber", "%build.number%")
         }
     }
@@ -370,7 +370,7 @@ object Tdd : BuildType({
         step {
             name = "Create and Deploy Release"
             type = "octopus.create.release"
-            param("secure:octopus_apikey", "%OctoApiKey%")
+            param("secure:octopus_apikey", "credentialsJSON:5923eadd-621b-4e8a-9b46-42d1fbbc65c6")
             param("octopus_releasenumber", "%build.number%")
             param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:%TDD-Resource-Group%-%build.number% --variable=container_app_name:%TDD-App-Name%")
             param("octopus_space_name", "%OctoSpaceName%")
@@ -398,7 +398,7 @@ object Tdd : BuildType({
                     ${'$'}containerAppURL = az containerapp show --resource-group %TDD-Resource-Group%-%build.number% --name %TDD-App-Name% --query properties.configuration.ingress.fqdn
                     ${'$'}containerAppURL = ${'$'}containerAppURL -replace '"', ''
                     Write-Host "url retrieved from AZ: ${'$'}containerAppURL"
-                    [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "Machine")
+                    [System.Environment]::SetEnvironmentVariable("containerAppURL", ${'$'}containerAppURL, "User")
                     Write-Host "ContainerAppURL after retrieval: ${'$'}env:containerAppURL"
                 """.trimIndent()
             }
@@ -488,7 +488,7 @@ object Uat : BuildType({
             param("octopus_project_name", "%OctoProject%")
             param("octopus_deploymenttimeout", "00:30:00")
             param("octopus_deployto", "UAT")
-            param("secure:octopus_apikey", "%OctoApiKey%")
+            param("secure:octopus_apikey", "credentialsJSON:5923eadd-621b-4e8a-9b46-42d1fbbc65c6")
             param("octopus_releasenumber", "%build.number%")
         }
     }
