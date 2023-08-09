@@ -49,13 +49,12 @@ variable "connection_string" {
 }
 
 variable "EnsureEnvironmentsExist" {
-    value "True" {
-        environment = ["tdd"]
+    value "False" {
+        environment = ["uat"]
     }
 
     value "False" {
-        description = ""
-        environment = ["prod", "uat"]
+        environment = ["prod"]
     }
 }
 
