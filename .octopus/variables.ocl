@@ -169,3 +169,19 @@ variable "ResourceGroupName" {
         }
     }
 }
+
+variable "DBScaledUpPerformanceLevel" {
+    value "S0" {}
+}
+
+variable "ContainerAppScaledUpMem" {
+    value "1.0" {}
+}
+
+variable "ContainerAppScaledUpCPU" {
+    value "0.5" {}
+}
+
+variable "ContainerAppScaledUpReplicas" {
+    value "2" {}
+}
