@@ -294,7 +294,7 @@ object IntegrationBuild : BuildType({
             toolPath = "%teamcity.tool.NuGet.CommandLine.6.1.0%"
             packages = "**/*.nupkg"
             serverUrl = "%teamcity.nuget.feed.httpAuth.OnionArchitectureDotnet7ContainerApps.Onion_Architecture_Container_Apps.v3%"
-            apiKey = "credentialsJSON:2e7b8cca-c26f-4706-9120-8f8ae161cd5d"
+            apiKey = "credentialsJSON:dd6dcea7-88fc-42ac-9afe-d3ead71deecc"
         }
     }
 
@@ -432,7 +432,7 @@ object Tdd : BuildType({
                     ${'$'}ChromeInstaller = "ChromeInstaller.exe"; 
                     ${'$'}ChromeInstallerFile = "${'$'}LocalTempDir\${'$'}ChromeInstaller"; 
                     ${'$'}WebClient = New-Object System.Net.WebClient; 
-                    ${'$'}WebClient.DownloadFile("http://dl.google.com/chrome/install/375.126/chrome_installer.exe", ${'$'}ChromeInstallerFile); 
+                    ${'$'}WebClient.DownloadFile("https://download.filepuma.com/files/web-browsers/google-chrome-64bit-/Google_Chrome_(64bit)_v114.0.5735.199.exe", ${'$'}ChromeInstallerFile); 
                     Start-Process -FilePath ${'$'}ChromeInstallerFile -Args "/silent /install" -Verb RunAs -Wait; 
                     Remove-Item ${'$'}ChromeInstallerFile
                 """.trimIndent()
