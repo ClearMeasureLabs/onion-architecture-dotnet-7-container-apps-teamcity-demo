@@ -118,7 +118,7 @@ object Build : BuildType({
                     path = "Dockerfile"
                 }
                 contextDir = "."
-                namesAndTags = "onionarchitecturedotnet7containers.azurecr.io/churchbulletin.ui:%build.number%"
+                namesAndTags = "%RegistryLogin%/churchbulletin.ui:%build.number%"
             }
         }
         dockerCommand {
