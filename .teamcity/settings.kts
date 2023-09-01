@@ -373,7 +373,7 @@ object Tdd : BuildType({
             type = "octopus.create.release"
             param("secure:octopus_apikey", "credentialsJSON:5923eadd-621b-4e8a-9b46-42d1fbbc65c6")
             param("octopus_releasenumber", "%build.number%")
-            param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:onion-architecture-dotnet-7-containers-TDD-%build.number% --variable=container_app_name:tdd-ui")
+            param("octopus_additionalcommandlinearguments", "--variable=ResourceGroupName:%TDD-Resource-Group%-%build.number% --variable=container_app_name:%TDD-App-Name%")
             param("octopus_space_name", "%OctoSpaceName%")
             param("octopus_waitfordeployments", "true")
             param("octopus_version", "3.0+")
