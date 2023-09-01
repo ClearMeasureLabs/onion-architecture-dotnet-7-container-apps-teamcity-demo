@@ -53,6 +53,7 @@ project {
         param("OctoSpace", "Spaces-195")
         param("env.BuildConfiguration", "Release")
         param("TDD-Resource-Group", "onion-architecture-dotnet-7-containers-TDD")
+        param("TDD-App-Name", "tdd-ui")
         param("OctoProject", "teamcity-dotnet-7-container-apps")
         param("OctoSpaceName", "Onion DevOps")
         param("env.BUILD_BUILDNUMBER", "%build.number%")
