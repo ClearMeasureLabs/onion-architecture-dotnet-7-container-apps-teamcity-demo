@@ -204,7 +204,7 @@ object DeleteTdd : BuildType({
                     # Log in to Azure
                     az login --service-principal --username %AzAppId% --password %AzPassword% --tenant %AzTenant%
                     
-                    az group delete -n onion-architecture-dotnet-7-containers-TDD-%build.number% --yes
+                    az group delete -n %TDD-Resource-Group%-%build.number% --yes
                 """.trimIndent()
             }
         }
