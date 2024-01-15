@@ -76,8 +76,8 @@ project {
             id = "PROJECT_EXT_3"
             name = "Onion-Arch ACR"
             url = "onionarchitecturedotnet7containers.azurecr.io"
-            userName = "767d5e60-4d25-4794-9a4d-f714fab829e0"
-            password = "credentialsJSON:b66a8739-aa0b-4987-a245-07c6907bdd01"
+            userName = "812c7930-4bff-4395-a78b-16def08200b5"
+            password = "credentialsJSON:e3b5caf7-d199-460a-8f12-795addc31fee"
         }
         nuGetFeed {
             id = "repository-nuget-Onion_Architecture_Container_Apps"
