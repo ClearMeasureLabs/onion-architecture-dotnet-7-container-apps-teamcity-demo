@@ -61,8 +61,8 @@ project {
         param("AzAppId", "812c7930-4bff-4395-a78b-16def08200b5")
         param("OctoURL", "https://clearmeasure.octopus.app/")
         password("AzPassword", "credentialsJSON:e3b5caf7-d199-460a-8f12-795addc31fee", label = "AzPassword")
-        password("OctoApiKey", "credentialsJSON:959b363e-7a9f-4706-86fa-532f285020e7", label = "OctoApiKey")
         param("RegistryLogin", "onionarchitecturedotnet7containers.azurecr.io")
+        password("OctoApiKey", "credentialsJSON:830bafa3-f6cc-4d08-8e74-6b8cc2867eaf", label = "OctoApiKey")
         password("AzTenant", "credentialsJSON:d16337c7-5751-4ecd-9110-f82755b0ebca", label = "AzTenant")
     }
 
